@@ -11,7 +11,7 @@
 -->
 
 
- <!-- Staging -->  <script type='text/javascript' src='https://c.la3-c1cs-phx.salesforceliveagent.com/content/g/js/44.0/deployment.js'></script>
+ <!-- Staging  <script type='text/javascript' src='https://c.la3-c1cs-phx.salesforceliveagent.com/content/g/js/44.0/deployment.js'></script>
 <script type='text/javascript'>
 liveagent.init('https://d.la3-c1cs-phx.salesforceliveagent.com/chat', '5721I000000M0Bz', '00DK000000XJriA');
 </script> 
@@ -41,7 +41,7 @@ liveagent.init('https://d.la3-c1cs-phx.salesforceliveagent.com/chat', '5721I0000
         });</script>
     -->
     <!--
-        Staging--> 
+        Staging 
         <h1>Staging</h1>
         <button><a id="liveagent_button_online_5731I000000Lycl" href="javascript://Chat" style="display: none;" onclick="liveagent.startChat('5731I000000Lycl')">Online</a><div id="liveagent_button_offline_5731I000000Lycl" style="display: none;">Offline</div></button>
     
@@ -50,7 +50,7 @@ liveagent.init('https://d.la3-c1cs-phx.salesforceliveagent.com/chat', '5721I0000
             window._laq.push(function(){liveagent.showWhenOnline('5731I000000Lycl', document.getElementById('liveagent_button_online_5731I000000Lycl'));
             liveagent.showWhenOffline('5731I000000Lycl', document.getElementById('liveagent_button_offline_5731I000000Lycl'));
             });</script>
-              
+         -->     
             
             
     <!--
@@ -122,7 +122,74 @@ liveagent.init('https://d.la3-c1cs-phx.salesforceliveagent.com/chat', '5721I0000
         }
     </script>
 -->
-            
+<h1>Snap In Dev</h1>
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Salesforce Sans", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
+	@font-face {
+		font-family: 'Salesforce Sans';
+		src: url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.woff') format('woff'),
+		url('https://www.sfdcstatic.com/system/shared/common/assets/fonts/SalesforceSans/SalesforceSans-Regular.ttf') format('truetype');
+	}
+</style>
+
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+
+		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+
+		// Settings for Live Agent
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+		//};
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+		embedded_svc.init(
+			'https://mjbroadsmart--dev220.cs21.my.salesforce.com',
+			'https://dev220-mjbroadsmart.cs21.force.com/mjfbsupport',
+			gslbBaseURL,
+			'00Dq000000017KF',
+			'MJB_Customer_Support',
+			{
+				baseLiveAgentContentURL: 'https://c.la4-c2cs-phx.salesforceliveagent.com/content',
+				deploymentId: '572q00000008Pwa',
+				buttonId: '573q00000008Qde',
+				baseLiveAgentURL: 'https://d.la4-c2cs-phx.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'MJB_Customer_Support',
+				isOfflineSupportEnabled: false
+			}
+		);
+	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://mjbroadsmart--dev220.cs21.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
 </div>
 </body>
 </html>
